@@ -5,15 +5,14 @@ public:
         for(int i = 0; i < nums.size(); i++){
             mp[nums[i]]++;
         }
-        vector<pair<int,int>>arr;
-        
+        priority_queue<pair<int,int>>pq;
         for(auto i : mp){
-            arr.push_back({i.second, i.first});
+            pq.push({i.second,i.first});
         }
-        sort(arr.rbegin(), arr.rend());
         vector<int>ans;
         for(int i = 0; i < k; i++){
-            ans.push_back(arr[i].second);
+            ans.push_back(pq.top().second);
+            pq.pop();
         }
         return ans;
     }
